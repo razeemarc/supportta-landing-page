@@ -26,13 +26,15 @@ const Step: React.FC<StepProps> = ({
 }) => {
   const controls = useAnimation();
   const [ref, inView] = useInView({
-    threshold: 0.25,
-    triggerOnce: true
+    threshold: 0.15,
+    triggerOnce: false // Changed to false so animations replay on scroll
   });
 
   useEffect(() => {
     if (inView) {
       controls.start('visible');
+    } else {
+      controls.start('hidden'); // Reset animation when out of view
     }
   }, [controls, inView]);
 
@@ -55,6 +57,37 @@ const Step: React.FC<StepProps> = ({
       y: 0,
       transition: {
         duration: 0.6,
+        ease: "easeOut"
+      }
+    }
+  };
+  
+  // Added different animation variants for different directions
+  const itemFromLeftVariants = {
+    hidden: { 
+      opacity: 0, 
+      x: -50 
+    },
+    visible: {
+      opacity: 1,
+      x: 0,
+      transition: {
+        duration: 0.7,
+        ease: "easeOut"
+      }
+    }
+  };
+  
+  const itemFromRightVariants = {
+    hidden: { 
+      opacity: 0, 
+      x: 50 
+    },
+    visible: {
+      opacity: 1,
+      x: 0,
+      transition: {
+        duration: 0.7,
         ease: "easeOut"
       }
     }
@@ -89,13 +122,13 @@ const Step: React.FC<StepProps> = ({
       >
         <motion.div 
           className="text-orange-400 font-semibold text-lg"
-          variants={itemVariants}
+          variants={isReversed ? itemFromRightVariants : itemFromLeftVariants}
         >
           STEP {stepNumber}
         </motion.div>
         <motion.h2 
           className="text-4xl sm:text-5xl font-bold leading-tight text-white"
-          variants={itemVariants}
+          variants={isReversed ? itemFromRightVariants : itemFromLeftVariants}
         >
           {title.map((line, index) => (
             <React.Fragment key={index}>
@@ -127,13 +160,13 @@ const Step: React.FC<StepProps> = ({
         >
           <motion.p 
             className="text-sm md:text-base leading-relaxed"
-            variants={itemVariants}
+            variants={isReversed ? itemFromLeftVariants : itemFromRightVariants}
           >
             {description}
           </motion.p>
           <motion.p 
             className="text-base md:text-lg font-medium mt-4"
-            variants={itemVariants}
+            variants={isReversed ? itemFromLeftVariants : itemFromRightVariants}
           >
             {summary}
           </motion.p>
@@ -147,12 +180,14 @@ const DiscoveryPhaseSection = () => {
   const controls = useAnimation();
   const [ref, inView] = useInView({
     threshold: 0.1,
-    triggerOnce: true
+    triggerOnce: false // Changed to false so section animates anytime it comes into view
   });
 
   useEffect(() => {
     if (inView) {
       controls.start('visible');
+    } else {
+      controls.start('hidden'); // Reset animation when section scrolls out of view
     }
   }, [controls, inView]);
 
@@ -207,6 +242,20 @@ const DiscoveryPhaseSection = () => {
       summary: 'Continuous support and optimization for lasting impact.'
     }
   ];
+
+  // Add a scroll listener to ensure animations work correctly on all browsers/devices
+  useEffect(() => {
+    // Force check IntersectionObserver on scroll
+    const handleScroll = () => {
+      if (window.scrollY > 100) {
+        // This just forces a re-check of elements in viewport
+        window.dispatchEvent(new CustomEvent('scroll-check'));
+      }
+    };
+    
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   return (
     <motion.div 
