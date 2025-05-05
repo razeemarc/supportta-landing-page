@@ -47,20 +47,20 @@ const Step: React.FC<StepProps> = ({
     }
   };
 
-  const itemVariants = {
-    hidden: { 
-      opacity: 0, 
-      y: 30 
-    },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: {
-        duration: 0.6,
-        ease: "easeOut"
-      }
-    }
-  };
+  // const itemVariants = {
+  //   hidden: { 
+  //     opacity: 0, 
+  //     y: 30 
+  //   },
+  //   visible: {
+  //     opacity: 1,
+  //     y: 0,
+  //     transition: {
+  //       duration: 0.6,
+  //       ease: "easeOut"
+  //     }
+  //   }
+  // };
   
   // Added different animation variants for different directions
   const itemFromLeftVariants = {
