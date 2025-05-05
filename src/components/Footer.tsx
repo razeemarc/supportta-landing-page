@@ -83,11 +83,11 @@ export default function Footer() {
             <input
               type="text"
               placeholder="Enter your Number"
-              className="px-3 py-2 w-full text-sm sm:text-base rounded-l border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#E08F34] text-black"
+              className="px-2 py-1.5 sm:px-3 sm:py-2 w-full text-xs sm:text-sm md:text-base rounded-l border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#E08F34] text-black h-8 sm:h-10 md:h-auto"
               value={phoneNumber}
               onChange={(e) => setPhoneNumber(e.target.value)}
             />
-            <button className="bg-[#E08F34] hover:bg-[#E08F34] text-white px-3 py-2 text-sm sm:text-base rounded-r transition-colors whitespace-nowrap">
+            <button className="bg-[#E08F34] hover:bg-[#E08F34] text-white px-2 py-1.5 sm:px-3 sm:py-2 text-xs sm:text-sm md:text-base rounded-r transition-colors whitespace-nowrap h-8 sm:h-10 md:h-auto min-w-[80px] sm:min-w-[100px] md:min-w-[120px]">
               Let&apos;s Connect
             </button>
           </div>
