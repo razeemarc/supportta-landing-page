@@ -1,5 +1,6 @@
 'use client'
 import { useState } from 'react';
+import Image from 'next/image';
 import Title from './common/title';
 
 interface ContactFormProps {
@@ -28,14 +29,12 @@ export default function ContactForm({ illustrationSrc = '/aboutus/amico.png' }: 
   };
 
   return (
-
     <div className="max-w-6xl mx-auto px-4 py-12 bg-[#fffcfc]">
       <div className="text-center mb-8">
         <div className="inline-block">
           <div className="flex items-center justify-center space-x-2 mb-3">
-           <Title text="Connect With Us" />
+            <Title text="Connect With Us" />
           </div>
-
         </div>
         <h1 className="text-4xl md:text-5xl font-bold text-gray-800">Let&apos;s Build Something Amazing!</h1>
       </div>
@@ -45,16 +44,19 @@ export default function ContactForm({ illustrationSrc = '/aboutus/amico.png' }: 
           <h2 className="text-3xl font-bold text-gray-800">Give Your Ideas Life!</h2>
 
           <div className="flex justify-center">
-            <img
-              src={illustrationSrc}
-              alt="Developer working on app"
-              className="max-w-md mx-auto"
-            />
+            <div className="relative w-full max-w-md h-[300px] mx-auto">
+              <Image
+                src={illustrationSrc}
+                alt="Developer working on app"
+                fill
+                className="object-contain"
+                priority
+              />
+            </div>
           </div>
 
           <h3 className="text-2xl font-medium text-gray-700">Share a Few Quick Details.</h3>
-        </div> 
-
+        </div>
 
         <div>
           <div className="space-y-8">

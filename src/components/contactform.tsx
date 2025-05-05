@@ -1,4 +1,6 @@
+'use client'
 import { useState, ChangeEvent } from 'react';
+import Image from 'next/image';
 
 export default function ContactForm() {
   const [formData, setFormData] = useState({
@@ -41,11 +43,15 @@ export default function ContactForm() {
           <h2 className="text-3xl font-bold text-gray-800">Give Your Ideas Life!</h2>
 
           <div className="flex justify-center">
-            <img 
-              src="/api/placeholder/400/320" 
-              alt="Developer working on app" 
-              className="w-full max-w-md"
-            />
+            <div className="relative w-full max-w-md h-[300px] mx-auto">
+              <Image
+                src="/api/placeholder/400/320" 
+                alt="Developer working on app"
+                fill
+                className="object-contain"
+                priority
+              />
+            </div>
           </div>
 
           <div className="text-center">

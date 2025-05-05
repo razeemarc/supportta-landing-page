@@ -1,4 +1,6 @@
+'use client'
 import React from 'react';
+import Image from 'next/image';
 
 type StepProps = {
   stepNumber: number;
@@ -32,11 +34,15 @@ const Step: React.FC<StepProps> = ({
       </h2>
     </div>
     <div className={`overflow-hidden ${isReversed ? 'md:order-1' : ''} text-white`}>
-      <img 
-        src={image.src}
-        alt={image.alt}
-        className="w-full max-w-full sm:max-w-md md:max-w-lg lg:max-w-xl xl:max-w-2xl h-auto mx-auto"
-      />
+      <div className="relative w-full max-w-full sm:max-w-md md:max-w-lg lg:max-w-xl xl:max-w-2xl h-auto mx-auto">
+        <Image
+          src={image.src}
+          alt={image.alt}
+          layout="fill"
+          objectFit="contain"
+          priority
+        />
+      </div>
       <div className="mt-12 space-y-6">
         <p className="text-lg leading-relaxed">{description}</p>
         <p className="text-xl font-medium mt-6">{summary}</p>
@@ -65,7 +71,7 @@ const DiscoveryPhaseSection = () => {
         alt: 'UI/UX Design Process'
       },
       description: 'With a solid foundation in place, our design team brings your vision to life. We create intuitive user interfaces and engaging experiences that resonate with your target audience. Our iterative design process ensures that every element serves a purpose and contributes to the overall user journey.',
-      summary: 'Beautiful, functional designs that captivate and convert.',
+      summary: 'Beautiful, functional designs that captivate and convert.'
     },
     {
       stepNumber: 3,
@@ -85,7 +91,7 @@ const DiscoveryPhaseSection = () => {
         alt: 'Launch and Support Team'
       },
       description: "We don't just deliver and disappear. Our team ensures a smooth launch and provides ongoing support to maintain optimal performance. We monitor, analyze, and optimize based on real user feedback and data, helping your solution evolve and grow with your business.",
-      summary: 'Continuous support and optimization for lasting impact.',
+      summary: 'Continuous support and optimization for lasting impact.'
     }
   ];
 
