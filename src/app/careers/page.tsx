@@ -7,21 +7,21 @@ const jobs = [
         department: "ENGINEERING",
         location: "REMOTE",
         type: "FULL-TIME",
-        description: "We're looking for an experienced software developer to join our team...",
+        description: "We&apos;re looking for an experienced software developer to join our team...",
     },
     {
         title: "Senior Software Developer",
         department: "ENGINEERING",
         location: "REMOTE",
         type: "FULL-TIME",
-        description: "We're looking for an experienced software developer to join our team...",
+        description: "We&apos;re looking for an experienced software developer to join our team...",
     },
     {
         title: "Senior Software Developer",
         department: "ENGINEERING",
         location: "REMOTE",
         type: "FULL-TIME",
-        description: "We're looking for an experienced software developer to join our team...",
+        description: "We&apos;re looking for an experienced software developer to join our team...",
     },
 ];
 
@@ -32,10 +32,10 @@ export default function CareersPage() {
             <section className="text-center py-16 bg-white mt-20 px-4">
                 <h1 className="text-4xl font-bold text-black">Careers</h1>
                 <p className="font-semibold text-gray-800 mt-2 text-lg">
-                    Let's Build Something Amazing Together!
+                    Let&apos;s Build Something Amazing Together!
                 </p>
                 <p className="text-gray-500 mt-4 max-w-2xl mx-auto">
-                    We're always looking for talented individuals to join <br /> our team and help us build amazing digital solutions.
+                    We&apos;re always looking for talented individuals to join <br /> our team and help us build amazing digital solutions.
                 </p>
             </section>
 
@@ -80,7 +80,7 @@ export default function CareersPage() {
                                     <button
                                         className="w-full md:w-[240px] h-[54px] px-[30px] py-[15px] rounded-lg text-white font-semibold border-2 border-[#C18830]"
                                         style={{
-                                            background: 'linear-gradient(180deg, #CC9642 0%, #976220 100%)',
+                                            background: "linear-gradient(180deg, #CC9642 0%, #976220 100%)",
                                         }}
                                     >
                                         Apply Now

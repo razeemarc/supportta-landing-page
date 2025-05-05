@@ -14,7 +14,7 @@ export default function ContactForm({ illustrationSrc = '/aboutus/amico.png' }: 
     projectDetails: ''
   });
 
-  const handleChange = (e: { target: { name: any; value: any; }; }) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
     setFormData(prev => ({
       ...prev,
@@ -37,7 +37,7 @@ export default function ContactForm({ illustrationSrc = '/aboutus/amico.png' }: 
           </div>
 
         </div>
-        <h1 className="text-4xl md:text-5xl font-bold text-gray-800">Let's Build Something Amazing!</h1>
+        <h1 className="text-4xl md:text-5xl font-bold text-gray-800">Let&apos;s Build Something Amazing!</h1>
       </div>
 
       <div className="grid md:grid-cols-2 gap-12 items-">
@@ -106,7 +106,7 @@ export default function ContactForm({ illustrationSrc = '/aboutus/amico.png' }: 
                 onClick={handleSubmit}
                 className="bg-green-700 hover:bg-green-800 text-white font-medium py-3 px-12 rounded-md transition duration-300"
               >
-                Let's Connect
+                Let&apos;s Connect
               </button>
             </div>
           </div>

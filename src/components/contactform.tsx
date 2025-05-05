@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, ChangeEvent } from 'react';
 
 export default function ContactForm() {
   const [formData, setFormData] = useState({
@@ -8,7 +8,7 @@ export default function ContactForm() {
     projectDetails: ''
   });
 
-  const handleChange = (e: { target: { name: any; value: any; }; }) => {
+  const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
     setFormData(prev => ({
       ...prev,
@@ -31,13 +31,15 @@ export default function ContactForm() {
             <div className="h-1 w-6 bg-green-600"></div>
           </div>
         </div>
-        <h1 className="text-4xl md:text-5xl font-bold text-gray-800">Let's Build Something Amazing!</h1>
+        <h1 className="text-4xl md:text-5xl font-bold text-gray-800">
+          Let&rsquo;s Build Something Amazing!
+        </h1>
       </div>
 
       <div className="grid md:grid-cols-2 gap-12 items-center">
         <div className="space-y-6">
           <h2 className="text-3xl font-bold text-gray-800">Give Your Ideas Life!</h2>
-          
+
           <div className="flex justify-center">
             <img 
               src="/api/placeholder/400/320" 
@@ -45,7 +47,7 @@ export default function ContactForm() {
               className="w-full max-w-md"
             />
           </div>
-          
+
           <div className="text-center">
             <h3 className="text-2xl font-medium text-gray-700">Share a Few Quick Details.</h3>
           </div>
@@ -63,7 +65,7 @@ export default function ContactForm() {
                 className="w-full border-b-2 border-gray-300 py-3 focus:border-green-600 focus:outline-none text-gray-700"
               />
             </div>
-            
+
             <div>
               <input
                 type="email"
@@ -74,7 +76,7 @@ export default function ContactForm() {
                 className="w-full border-b-2 border-gray-300 py-3 focus:border-green-600 focus:outline-none text-gray-700"
               />
             </div>
-            
+
             <div>
               <input
                 type="tel"
@@ -85,7 +87,7 @@ export default function ContactForm() {
                 className="w-full border-b-2 border-gray-300 py-3 focus:border-green-600 focus:outline-none text-gray-700"
               />
             </div>
-            
+
             <div>
               <textarea
                 name="projectDetails"
@@ -95,13 +97,13 @@ export default function ContactForm() {
                 className="w-full border-b-2 border-gray-300 py-3 focus:border-green-600 focus:outline-none text-gray-700 resize-none h-32"
               ></textarea>
             </div>
-            
+
             <div className="flex justify-center pt-6">
               <button
                 onClick={handleSubmit}
                 className="bg-green-700 hover:bg-green-800 text-white font-medium py-3 px-12 rounded-md transition duration-300"
               >
-                Let's Connect
+                Let&rsquo;s Connect
               </button>
             </div>
           </div>

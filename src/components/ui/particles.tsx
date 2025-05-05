@@ -211,7 +211,7 @@ export const Particles: React.FC<ParticlesProps> = ({
 
   const drawCircle = (circle: Circle, update = false) => {
     if (context.current) {
-      const { x, y, z, translateX, translateY, translateZ, size, alpha } = circle
+      const { x, y, z, translateX, translateY, size, alpha } = circle
       
       // Calculate size based on z position for perspective effect
       const scale = (1000 + z) / 1000

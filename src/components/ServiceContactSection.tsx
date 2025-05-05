@@ -8,7 +8,7 @@ export default function ServicesContactSection() {
     projectDetails: ''
   });
 
-  const handleChange = (e: { target: { name: any; value: any; }; }) => {
+  const handleChange = (e: { target: { name: string; value: string } }) => {
     const { name, value } = e.target;
     setFormData(prevState => ({
       ...prevState,
@@ -77,7 +77,7 @@ export default function ServicesContactSection() {
 
       {/* Let's Build Something Amazing */}
       <div className="text-center mb-10">
-        <h2 className="text-2xl md:text-3xl font-medium text-gray-800">Let's Build Something Amazing!</h2>
+        <h2 className="text-2xl md:text-3xl font-medium text-gray-800">Let&apos;s Build Something Amazing!</h2>
       </div>
 
       {/* Contact Form Section */}
@@ -144,7 +144,7 @@ export default function ServicesContactSection() {
                   onClick={handleSubmit}
                   className="px-6 py-2 bg-amber-600 text-white rounded hover:bg-amber-700 transition-colors"
                 >
-                  Let's Connect
+                  Let&apos;s Connect
                 </button>
               </div>
             </div>
@@ -165,7 +165,7 @@ export default function ServicesContactSection() {
             </div>
             <div className="text-xs text-gray-600 max-w-lg text-center md:text-right">
               Driven by innovation and fueled by passion, Supportta is committed to delivering digital solutions that make a difference.
-              Let's build the future together.
+              Let&apos;s build the future together.
             </div>
           </div>
         </div>

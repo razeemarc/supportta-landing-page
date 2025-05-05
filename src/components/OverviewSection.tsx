@@ -1,6 +1,4 @@
-
 import React from 'react';
-
 
 const OverviewSection = () => {
   return (
@@ -14,7 +12,7 @@ const OverviewSection = () => {
 
       {/* Main Heading */}
       <h1 className="text-4xl md:text-5xl font-bold text-gray-800 text-center mb-16">
-        Your Vision, Our Innovation – Building Success Together.
+        Your Vision, Our Innovation &ndash; Building Success Together.
       </h1>
 
       {/* Hero Image */}
@@ -29,18 +27,16 @@ const OverviewSection = () => {
       {/* Description Text */}
       <div className="space-y-8">
         <p className="text-xl md:text-2xl font-medium text-gray-800">
-          Welcome to Supportta – <span className="font-bold">Your Success, Our Priority – For You, With You</span>.
+          Welcome to Supportta &ndash; <span className="font-bold">Your Success, Our Priority &ndash; For You, With You</span>.
         </p>
         
         <p className="text-lg text-gray-700 leading-relaxed">
-          We're not just a software development company; we're your partners in turning bold ideas into game-changing digital solutions. 
+          We&apos;re not just a software development company; we&apos;re your partners in turning bold ideas into game-changing digital solutions. 
           With a team of young, brilliant minds and a passion for problem-solving, we deliver tailored solutions that are as unique as your vision. 
-          From concept to launch, we're with you every step of the way, ensuring 100% satisfaction and results that speak for themselves. <span className="text-2xl font-bold text-gray-800">
-          "Your success is our mission"
+          From concept to launch, we&apos;re with you every step of the way, ensuring 100% satisfaction and results that speak for themselves. <span className="text-2xl font-bold text-gray-800">
+          &quot;Your success is our mission&quot;
         </span>
         </p>
-        
-       
       </div>
     </div>
   );

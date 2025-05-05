@@ -6,7 +6,7 @@ import MissionVisionSection from '../../components/missionVisionsection'
 import OverviewSection from '../../components/OverviewSection'
 import DiscoveryPhaseSection from '../../components/DiscoveryPhaseSection'
 import ContactForm from '../../components/contact-form'
-import { AnimatedBackground } from 'animated-backgrounds';
+
 
 
 export default function page() {
