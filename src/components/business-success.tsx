@@ -1,6 +1,7 @@
 'use client'
 
 import Image from "next/image";
+import { motion } from "framer-motion";
 import {
   Accordion,
   AccordionContent,
@@ -33,119 +34,166 @@ const BusinessSuccess = () => {
     }
   ];
 
+  // Animation variants
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.2,
+        delayChildren: 0.3
+      }
+    }
+  };
+
+  const titleVariants = {
+    hidden: { opacity: 0, y: -20 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.6,
+        ease: "easeOut"
+      }
+    }
+  };
+
+  const imageVariants = {
+    hidden: { opacity: 0, scale: 0.8 },
+    visible: (index: number) => ({
+      opacity: 1,
+      scale: 1,
+      transition: {
+        delay: index * 0.2,
+        duration: 0.5,
+        ease: "easeOut"
+      }
+    }),
+    hover: {
+      scale: 1.05,
+      transition: {
+        duration: 0.3,
+        ease: "easeOut"
+      }
+    }
+  };
+
+  const accordionVariants = {
+    hidden: { opacity: 0, x: -20 },
+    visible: {
+      opacity: 1,
+      x: 0,
+      transition: {
+        duration: 0.5,
+        ease: "easeOut"
+      }
+    }
+  };
+
   return (
-    <div className="min-h-screen flex items-center justify-center bg-white">
+    <motion.div 
+      className="min-h-screen flex items-center justify-center bg-white"
+      initial="hidden"
+      animate="visible"
+      variants={containerVariants}
+    >
       <div className="w-full max-w-6xl px-4 py-8 sm:py-10 md:py-12">
-        <div className="mb-8 sm:mb-10 md:mb-12 text-center">
+        <motion.div 
+          className="mb-8 sm:mb-10 md:mb-12 text-center"
+          variants={titleVariants}
+        >
           <div className="flex items-center justify-center mb-2 sm:mb-3">
             <Title text="WHY CHOOSE US" />
           </div>
-          <h2 className="text-2xl sm:text-2xl md:text-3xl font-medium text-gray-800">
+          <motion.h2 
+            className="text-2xl sm:text-2xl md:text-3xl font-medium text-gray-800"
+            variants={titleVariants}
+          >
             Your Trusted Partner for<br />Business Success
-          </h2>
-        </div>
+          </motion.h2>
+        </motion.div>
         
         {/* Image section - visible only on small screens between title and accordion */}
         <div className="flex justify-center md:hidden mb-8">
           <div className="flex flex-col space-y-4 items-center w-full max-w-xs">
-            <div className="rounded-full overflow-hidden h-28 w-28 bg-gray-100 relative">
-              <Image
-                src={items[0].image}
-                alt={items[0].title}
-                fill
-                className="object-cover"
-              />
-            </div>
-            <div className="relative w-full flex justify-center">
-              <div className="rounded-full overflow-hidden h-28 w-28 bg-gray-100 relative">
+            {items.slice(0, 3).map((item, index) => (
+              <motion.div 
+                key={`mobile-image-${index}`}
+                className="rounded-full overflow-hidden h-28 w-28 bg-gray-100 relative"
+                custom={index}
+                variants={imageVariants}
+                whileHover="hover"
+              >
                 <Image
-                  src={items[1].image}
-                  alt={items[1].title}
+                  src={item.image}
+                  alt={item.title}
                   fill
                   className="object-cover"
                 />
-              </div>
-              {/* Logo positioned to the right of the second image */}
-              <div className="absolute -right-4 top-1/2 transform -translate-y-1/2">
-                {/* <Image
-                  src="/supportta-logo.png"
-                  alt="Company Logo"
-                  width={48}
-                  height={48}
-                /> */}
-              </div>
-            </div>
-            <div className="rounded-full overflow-hidden h-28 w-28 bg-gray-100 relative">
-              <Image
-                src={items[2].image}
-                alt={items[2].title}
-                fill
-                className="object-cover"
-              />
-            </div>
+              </motion.div>
+            ))}
+            {/* Logo positioning remains the same */}
+            <motion.div className="absolute -right-4 top-1/2 transform -translate-y-1/2">
+              {/* Logo commented out as in original */}
+            </motion.div>
           </div>
         </div>
         
         <div className="grid grid-cols-1 md:grid-cols-5 gap-4 sm:gap-5 md:gap-6">
-          <div className="md:col-span-3">
+          <motion.div 
+            className="md:col-span-3"
+            variants={accordionVariants}
+          >
             <Accordion type="single" collapsible defaultValue="item-0" className="w-full">
               {items.map((item, index) => (
-                <AccordionItem key={`item-${index}`} value={`item-${index}`} className="border-b border-gray-200">
-                  <AccordionTrigger
-                    className="py-3 sm:py-3 md:py-4 hover:no-underline text-gray-800 pt-6 sm:pt-7 md:pt-9 font-raleway font-normal text-2xl sm:text-3xl md:text-4xl leading-none tracking-normal"
-                  >
-                    {item.title}
-                  </AccordionTrigger>
-                  
-                  <AccordionContent className="py-1 sm:py-1.5 md:py-2 text-gray-600 text-sm sm:text-base">
-                    {item.content}
-                  </AccordionContent>
-                </AccordionItem>
+                <motion.div
+                  key={`item-${index}`}
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: index * 0.1, duration: 0.5 }}
+                >
+                  <AccordionItem value={`item-${index}`} className="border-b border-gray-200">
+                    <AccordionTrigger
+                      className="py-3 sm:py-3 md:py-4 hover:no-underline text-gray-800 pt-6 sm:pt-7 md:pt-9 font-raleway font-normal text-2xl sm:text-3xl md:text-4xl leading-none tracking-normal"
+                    >
+                      {item.title}
+                    </AccordionTrigger>
+                    
+                    <AccordionContent className="py-1 sm:py-1.5 md:py-2 text-gray-600 text-sm sm:text-base">
+                      {item.content}
+                    </AccordionContent>
+                  </AccordionItem>
+                </motion.div>
               ))}
             </Accordion>
-          </div>
+          </motion.div>
           
           {/* Image section - visible only on medium screens and above */}
           <div className="hidden md:flex md:col-span-2 md:flex-col md:space-y-5">
-            <div className="rounded-full overflow-hidden h-28 bg-gray-100 relative">
-              <Image
-                src={items[0].image}
-                alt={items[0].title}
-                fill
-                className="object-cover"
-              />
-            </div>
-            <div className="relative">
-              <div className="rounded-full overflow-hidden h-28 bg-gray-100 relative">
+            {items.slice(0, 3).map((item, index) => (
+              <motion.div 
+                key={`desktop-image-${index}`}
+                className="rounded-full overflow-hidden h-28 bg-gray-100 relative"
+                custom={index}
+                variants={imageVariants}
+                whileHover="hover"
+              >
                 <Image
-                  src={items[1].image}
-                  alt={items[1].title}
+                  src={item.image}
+                  alt={item.title}
                   fill
                   className="object-cover"
                 />
-              </div>
-              {/* Logo positioned to the right of the second image */}
-              <div className="absolute -right-12 top-1/2 transform -translate-y-1/2">
-                {/* <Image
-                  src="/supportta-logo.png"
-                  alt="Company Logo"
-                  width={48}
-                  height={48}
-                /> */}
-              </div>
-            </div>
-            <div className="rounded-full overflow-hidden h-28 bg-gray-100 relative">
-              <Image
-                src={items[2].image}
-                alt={items[2].title}
-                fill
-                className="object-cover"
-              />
-            </div>
+              </motion.div>
+            ))}
+            {/* Logo positioning remains the same */}
+            <motion.div className="absolute -right-12 top-1/2 transform -translate-y-1/2">
+              {/* Logo commented out as in original */}
+            </motion.div>
           </div>
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 };
 

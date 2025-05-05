@@ -1,6 +1,8 @@
 'use client'
-import React from 'react';
+import React, { useEffect } from 'react';
 import Image from 'next/image';
+import { motion, useAnimation } from 'framer-motion';
+import { useInView } from 'react-intersection-observer';
 
 type StepProps = {
   stepNumber: number;
@@ -21,37 +23,148 @@ const Step: React.FC<StepProps> = ({
   description, 
   summary,
   isReversed = false
-}) => (
-  <div className="grid md:grid-cols-2 gap-12 items-center mb-24 px-2 sm:px-4">
-    <div className={`space-y-6 ${isReversed ? 'md:order-2' : ''}`}>
-      <div className="text-orange-400 font-semibold text-lg mb-2">STEP {stepNumber}</div>
-      <h2 className="text-4xl sm:text-5xl md:text-6xl font-bold leading-tight">
-        {title.map((line, index) => (
-          <React.Fragment key={index}>
-            {line}<br />
-          </React.Fragment>
-        ))}
-      </h2>
-    </div>
-    <div className={`overflow-hidden ${isReversed ? 'md:order-1' : ''} text-white`}>
-      <div className="relative w-full max-w-full sm:max-w-md md:max-w-lg lg:max-w-xl xl:max-w-2xl h-auto mx-auto">
-        <Image
-          src={image.src}
-          alt={image.alt}
-          layout="fill"
-          objectFit="contain"
-          priority
-        />
-      </div>
-      <div className="mt-12 space-y-6">
-        <p className="text-lg leading-relaxed">{description}</p>
-        <p className="text-xl font-medium mt-6">{summary}</p>
-      </div>
-    </div>
-  </div>
-);
+}) => {
+  const controls = useAnimation();
+  const [ref, inView] = useInView({
+    threshold: 0.25,
+    triggerOnce: true
+  });
+
+  useEffect(() => {
+    if (inView) {
+      controls.start('visible');
+    }
+  }, [controls, inView]);
+
+  const containerVariants = {
+    hidden: {},
+    visible: {
+      transition: {
+        staggerChildren: 0.2
+      }
+    }
+  };
+
+  const itemVariants = {
+    hidden: { 
+      opacity: 0, 
+      y: 30 
+    },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.6,
+        ease: "easeOut"
+      }
+    }
+  };
+
+  const imageVariants = {
+    hidden: { 
+      opacity: 0,
+      scale: 0.9
+    },
+    visible: {
+      opacity: 1,
+      scale: 1,
+      transition: {
+        duration: 0.8,
+        ease: "easeOut"
+      }
+    }
+  };
+
+  return (
+    <motion.div 
+      ref={ref}
+      className="grid md:grid-cols-2 gap-12 items-start mb-24"
+      variants={containerVariants}
+      initial="hidden"
+      animate={controls}
+    >
+      <motion.div 
+        className={`space-y-6 ${isReversed ? 'md:order-2' : ''}`}
+        variants={containerVariants}
+      >
+        <motion.div 
+          className="text-orange-400 font-semibold text-lg"
+          variants={itemVariants}
+        >
+          STEP {stepNumber}
+        </motion.div>
+        <motion.h2 
+          className="text-4xl sm:text-5xl font-bold leading-tight text-white"
+          variants={itemVariants}
+        >
+          {title.map((line, index) => (
+            <React.Fragment key={index}>
+              {line}<br />
+            </React.Fragment>
+          ))}
+        </motion.h2>
+      </motion.div>
+      
+      <motion.div 
+        className={`${isReversed ? 'md:order-1' : ''} flex flex-col`}
+        variants={containerVariants}
+      >
+        <motion.div 
+          className="relative w-full h-64 md:h-72 mb-8"
+          variants={imageVariants}
+        >
+          <Image
+            src={image.src}
+            alt={image.alt}
+            fill
+            className="object-cover"
+            priority
+          />
+        </motion.div>
+        <motion.div 
+          className="space-y-4 text-white"
+          variants={containerVariants}
+        >
+          <motion.p 
+            className="text-sm md:text-base leading-relaxed"
+            variants={itemVariants}
+          >
+            {description}
+          </motion.p>
+          <motion.p 
+            className="text-base md:text-lg font-medium mt-4"
+            variants={itemVariants}
+          >
+            {summary}
+          </motion.p>
+        </motion.div>
+      </motion.div>
+    </motion.div>
+  );
+};
 
 const DiscoveryPhaseSection = () => {
+  const controls = useAnimation();
+  const [ref, inView] = useInView({
+    threshold: 0.1,
+    triggerOnce: true
+  });
+
+  useEffect(() => {
+    if (inView) {
+      controls.start('visible');
+    }
+  }, [controls, inView]);
+
+  const containerVariants = {
+    hidden: {},
+    visible: {
+      transition: {
+        staggerChildren: 0.3
+      }
+    }
+  };
+
   const steps = [
     {
       stepNumber: 1,
@@ -96,13 +209,19 @@ const DiscoveryPhaseSection = () => {
   ];
 
   return (
-    <div className="bg-black text-white py-24 px-4">
-      <div className="container mx-auto max-w-7xl">
+    <motion.div 
+      ref={ref}
+      className="bg-black text-white py-24"
+      variants={containerVariants}
+      initial="hidden"
+      animate={controls}
+    >
+      <div className="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         {steps.map((step, index) => (
           <Step key={step.stepNumber} {...step} isReversed={index % 2 === 1} />
         ))}
       </div>
-    </div>
+    </motion.div>
   );
 };
 

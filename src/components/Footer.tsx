@@ -17,9 +17,9 @@ export default function Footer() {
             <div>
               <h3 className="text-lg font-medium text-[#E08F34] mb-4">Resources</h3>
               <ul className="space-y-2 text-sm">
-                <li><a href="#" className="hover:text-[#E08F34]">Careers</a></li>
-                <li><a href="#" className="hover:text-[#E08F34]">About Us</a></li>
-                <li><a href="#" className="hover:text-[#E08F34]">Contact Us</a></li>
+                <li><a href="/careers" className="hover:text-[#E08F34]">Careers</a></li>
+                <li><a href="/about-us" className="hover:text-[#E08F34]">About Us</a></li>
+                <li><a href="/contact-us" className="hover:text-[#E08F34]">Contact Us</a></li>
               </ul>
             </div>
 
