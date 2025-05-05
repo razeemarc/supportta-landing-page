@@ -87,7 +87,7 @@ export default function Footer() {
               value={phoneNumber}
               onChange={(e) => setPhoneNumber(e.target.value)}
             />
-            <button className="bg-[#E08F34] hover:bg-[#E08F34] text-white px-2 py-1.5 sm:px-3 sm:py-2 text-xs sm:text-sm md:text-base rounded-r transition-colors whitespace-nowrap h-8 sm:h-10 md:h-auto min-w-[80px] sm:min-w-[100px] md:min-w-[120px]">
+            <button className="bg-[#E08F34] hover:bg-[#E08F34] text-white px-2 py-1.5 sm:px-3 sm:py-2 text-xs sm:text-sm md:text-base rounded-r transition-colors whitespace-nowrap h-8 sm:h-10 md:h-auto min-w-[0px] sm:min-w-[50px] md:min-w-[120px]">
               Let&apos;s Connect
             </button>
           </div>

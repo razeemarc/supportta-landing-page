@@ -137,7 +137,7 @@ export default function HomePage() {
               <motion.div whileHover="hover" variants={buttonHoverVariants}>
                 <Link
                   href="/contact"
-                  className="bg-gradient-to-r from-yellow-600 to-[#E08F34] hover:from-yellow-500 hover:to-orange-400 text-white px-6 py-3 rounded font-medium"
+                  className="bg-gradient-to-r from-yellow-600 to-[#E08F34] hover:from-yellow-500 hover:to-orange-400 text-white px-4 py-2 sm:px-5 sm:py-2.5 md:px-6 md:py-3 rounded font-medium text-sm sm:text-base w-[110px] sm:w-[130px] md:w-[150px] text-center inline-block"
                 >
                   Let&apos;s Connect
                 </Link>
@@ -146,7 +146,7 @@ export default function HomePage() {
               <motion.div whileHover="hover" variants={buttonHoverVariants}>
                 <Link
                   href="/services"
-                  className="border border-green-500 text-green-500 hover:bg-green-500 hover:text-white px-6 py-3 rounded font-medium"
+                  className="border border-green-500 text-green-500 hover:bg-green-500 hover:text-white px-4 py-2 sm:px-5 sm:py-2.5 md:px-6 md:py-3 rounded font-medium text-sm sm:text-base w-[110px] sm:w-[130px] md:w-[150px] text-center inline-block"
                 >
                   Check Our Services
                 </Link>
