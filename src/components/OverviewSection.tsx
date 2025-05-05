@@ -1,4 +1,6 @@
+'use client'
 import React from 'react';
+import Image from 'next/image';
 
 const OverviewSection = () => {
   return (
@@ -16,11 +18,13 @@ const OverviewSection = () => {
       </h1>
 
       {/* Hero Image */}
-      <div className="w-full h-80 md:h-[500px] mb-16 overflow-hidden rounded-lg shadow-lg">
-        <img 
+      <div className="w-full h-80 md:h-[500px] mb-16 overflow-hidden rounded-lg shadow-lg relative">
+        <Image 
           src="/aboutus/table.png" 
           alt="Team collaborating around a table" 
-          className="w-full h-full object-cover"
+          layout="fill"
+          objectFit="cover"
+          priority
         />
       </div>
 

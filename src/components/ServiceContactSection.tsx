@@ -1,4 +1,6 @@
+'use client'
 import { useState } from 'react';
+import Image from 'next/image';
 
 export default function ServicesContactSection() {
   const [formData, setFormData] = useState({
@@ -36,9 +38,11 @@ export default function ServicesContactSection() {
         <div className="flex flex-wrap justify-center gap-8 md:gap-16">
           {/* Mobile Apps */}
           <div className="text-center w-64">
-            <img 
+            <Image 
               src="/api/placeholder/200/200" 
               alt="Android/iOS Applications" 
+              width={160} 
+              height={160} 
               className="mx-auto mb-4 w-40"
             />
             <p className="text-gray-700">Android/iOS Applications</p>
@@ -46,9 +50,11 @@ export default function ServicesContactSection() {
 
           {/* Custom Software */}
           <div className="text-center w-64">
-            <img 
+            <Image 
               src="/api/placeholder/200/200" 
               alt="Custom-built Softwares" 
+              width={160} 
+              height={160} 
               className="mx-auto mb-4 w-40"
             />
             <p className="text-gray-700">Custom-built Softwares</p>
@@ -56,9 +62,11 @@ export default function ServicesContactSection() {
 
           {/* E-Commerce */}
           <div className="text-center w-64">
-            <img 
+            <Image 
               src="/api/placeholder/200/200" 
               alt="E-Commerce Websites" 
+              width={160} 
+              height={160} 
               className="mx-auto mb-4 w-40"
             />
             <p className="text-gray-700">E-Commerce Websites</p>
@@ -87,9 +95,11 @@ export default function ServicesContactSection() {
           <div className="text-center md:text-left">
             <h3 className="text-xl font-medium text-gray-800 mb-6">Give Your Ideas Life!</h3>
             <div className="flex justify-center md:justify-start">
-              <img 
+              <Image 
                 src="/api/placeholder/150/150" 
                 alt="Development illustration" 
+                width={150} 
+                height={150} 
                 className="w-32 md:w-40"
               />
             </div>
@@ -157,9 +167,11 @@ export default function ServicesContactSection() {
         <div className="container mx-auto px-4">
           <div className="flex flex-col md:flex-row justify-between items-center">
             <div className="mb-4 md:mb-0">
-              <img 
+              <Image 
                 src="/api/placeholder/150/50" 
                 alt="Supportta Logo" 
+                width={150} 
+                height={50} 
                 className="h-10"
               />
             </div>
